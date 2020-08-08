@@ -1,0 +1,113 @@
+<event>
+element = {event($set, view, buy), entityType(user, item), entityId, eventTime, properties, targetEntityType(item), targetEntityId}
+
+setUser()
+{
+  "event" : "$set",
+  "entityType" : "user",
+  "entityId" : "u0",
+  "eventTime" : "2014-11-02T09:39:45.618-08:00"
+}
+
+setItem()
+{
+  "event" : "$set",
+  "entityType" : "item",
+  "entityId" : "i0",
+  "properties" : {
+    "categories" : ["c1", "c2"]
+  }
+  "eventTime" : "2014-11-02T09:39:45.618-08:00"
+}
+
+setView()
+{
+  "event" : "view",
+  "entityType" : "user",
+  "entityId" : "u0",
+  "targetEntityType" : "item",
+  "targetEntityId" : "i0",
+  "eventTime" : "2014-11-10T12:34:56.123-08:00"
+}
+
+setBuy()
+{
+  "event" : "buy",
+  "entityType" : "user",
+  "entityId" : "u0",
+  "targetEntityType" : "item",
+  "targetEntityId" : "i0",
+  "eventTime" : "2014-11-10T13:00:00.123-08:00"
+}
+
+<engine>
+element = {user, num, categories}
+
+predict()
+{
+  "user": "u1",
+  "num": 4,
+}
+
+predictCate()
+{
+  "user": "u1",
+  "num": 4,
+  "categories" : ["c4", "c3"]
+}
+
+<class>
+class Shape {
+	protected $pointArray;
+
+	public function __construct($points) {
+		$this->pointArray = $points;
+	}
+}
+
+class Rectangle extends Shape {
+	public function draw() {
+		print_r($this->pointArray);
+		echo("draw rectangle");
+	}
+}
+
+class Triangle extends Shape {
+	public function draw() {
+		print_r($this->pointArray);
+		echo("draw triangle");
+	}
+}
+
+$shape = new Shape(?);
+$shape->메소드
+
+- public : 아무것도 명시않으면 Public, class 밖에서도 접근 가능 
+- private : 클래스 내부에서만 접근, 상속X
+- protected : 클래스 내부에서만 접근, 상속O 
+
+<오버라이딩>
+class A
+{
+    public $property = "class A";
+    public function showProperty()
+    {
+        echo $this->property."<br>";
+    }
+}
+
+
+class B extends A                    // 클래스 A를 상속 받음.
+{
+    public $property = "class B";
+    public function showProperty()   // 클래스 A의 메소드를 오버라이딩
+    {
+        echo "hello ".$this->property."<br>";
+    }
+}
+
+
+$a = new A();
+$a->showProperty();                  // 클래스 A의 메소드 호출
+$b = new B();
+$b->showProperty();                  // 클래스 B의 메소드 호출
